@@ -1,0 +1,48 @@
+.page { min-height: 100vh; display: flex; flex-direction: column; background: var(--egis-light); }
+
+.header {
+  background: var(--egis-navy);
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: 60px;
+  box-shadow: var(--shadow-md);
+  flex-shrink: 0;
+}
+
+.logoBar { width: 4px; height: 28px; background: var(--egis-green); border-radius: 2px; flex-shrink: 0; }
+
+.headerInfo { display: flex; flex-direction: column; }
+.candidatLabel { font-size: 0.9rem; font-weight: 600; color: #fff; line-height: 1.2; }
+.scoreLabel { font-size: 0.72rem; color: rgba(255,255,255,0.55); }
+
+.headerSpacer { flex: 1; }
+
+.progressWrap { height: 4px; background: rgba(255,255,255,0.15); }
+.progressFill { height: 100%; background: var(--egis-green); transition: width 0.5s ease; }
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  width: 100%;
+  gap: 1rem;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.counter { font-size: 0.82rem; color: var(--egis-gray); font-weight: 500; }
+
+.questionCard { padding: 1.75rem; width: 100%; }
+
+.hint { font-size: 0.78rem; color: var(--egis-gray); font-style: italic; }

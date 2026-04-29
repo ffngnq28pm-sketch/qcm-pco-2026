@@ -1,0 +1,84 @@
+.container {
+  background: var(--egis-white);
+  border: 1px solid var(--egis-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.compact .header { padding: 0.75rem 1rem; }
+.compact .row { padding: 0.5rem 1rem; }
+
+.header {
+  background: var(--egis-navy);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.trophy { font-size: 1rem; }
+
+.title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.list { display: flex; flex-direction: column; }
+
+.row {
+  display: grid;
+  grid-template-columns: 2rem 1fr auto auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.65rem 1.25rem;
+  border-bottom: 1px solid var(--egis-border);
+  transition: background 0.15s;
+}
+
+.row:last-child { border-bottom: none; }
+
+.highlight { background: var(--egis-green-light); }
+
+.rank { display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+
+.rankNum {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--egis-light);
+  color: var(--egis-gray);
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nom {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--egis-anthracite);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.score {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--egis-green-dark);
+  font-variant-numeric: tabular-nums;
+}
+
+.scoreTotal { font-weight: 400; color: var(--egis-gray); font-size: 0.8rem; }
+
+.temps {
+  font-size: 0.8rem;
+  color: var(--egis-gray);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}

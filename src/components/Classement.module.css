@@ -1,0 +1,133 @@
+.page { min-height: 100vh; display: flex; flex-direction: column; background: var(--egis-light); }
+
+.header {
+  background: var(--egis-navy);
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: 60px;
+  box-shadow: var(--shadow-md);
+  flex-wrap: wrap;
+  min-height: 60px;
+}
+
+.logoBar { width: 4px; height: 28px; background: var(--egis-green); border-radius: 2px; flex-shrink: 0; }
+.headerTitle { font-size: 0.95rem; font-weight: 600; color: #fff; line-height: 1.2; }
+.headerSub { font-size: 0.72rem; color: rgba(255,255,255,0.5); }
+.headerSpacer { flex: 1; }
+.resetBtn { color: rgba(255,255,255,0.55); border-color: rgba(255,255,255,0.15); font-size: 0.8rem; }
+.resetBtn:hover { color: var(--wrong) !important; border-color: rgba(239,68,68,0.4) !important; background: rgba(239,68,68,0.08) !important; }
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+  gap: 1.5rem;
+}
+
+/* Podium */
+.podiumWrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+.podiumItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  border-radius: var(--radius) var(--radius) 0 0;
+  padding: 1rem 1.25rem 0.75rem;
+  flex: 1;
+  background: var(--egis-white);
+  border: 1px solid var(--egis-border);
+  border-bottom: none;
+}
+
+.podium1 { padding-top: 1.5rem; border-top: 3px solid #f59e0b; }
+.podium2 { padding-top: 1.2rem; border-top: 3px solid #94a3b8; }
+.podium3 { padding-top: 1rem; border-top: 3px solid #cd7c2f; }
+
+.podiumMedal { font-size: 1.5rem; }
+.podiumNom { font-size: 0.82rem; font-weight: 700; color: var(--egis-navy); text-align: center; word-break: break-word; }
+.podiumScore { font-size: 1rem; font-weight: 800; color: var(--egis-green-dark); }
+.podiumPct { font-size: 0.72rem; color: var(--egis-gray); }
+
+/* Table */
+.tableCard { width: 100%; overflow: hidden; }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.table thead tr {
+  background: var(--egis-navy);
+}
+
+.table thead th {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid var(--egis-border);
+  transition: background 0.12s;
+}
+
+.table tbody tr:last-child { border-bottom: none; }
+.table tbody tr:hover { background: var(--egis-light); }
+
+.table tbody td { padding: 0.75rem 1rem; }
+
+.highlight { background: var(--egis-green-light) !important; }
+.top10 { }
+
+.rankCell { font-size: 1rem; }
+.rankNum {
+  display: inline-flex;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--egis-light);
+  align-items: center; justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--egis-gray);
+}
+
+.nomCell { font-weight: 600; color: var(--egis-anthracite); }
+.scoreCell { font-weight: 700; color: var(--egis-green-dark); font-variant-numeric: tabular-nums; }
+.tempsCell { color: var(--egis-gray); font-variant-numeric: tabular-nums; }
+.dateCell { color: var(--egis-gray); font-size: 0.78rem; }
+
+.pctBadge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.pctHaut { background: rgba(34,197,94,0.12); color: #15803d; }
+.pctMid { background: rgba(122,193,67,0.15); color: var(--egis-green-dark); }
+.pctBas { background: rgba(239,68,68,0.1); color: #dc2626; }
+
+.emptyCard { padding: 3rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+.emptyText { color: var(--egis-gray); font-size: 1rem; }

@@ -1,0 +1,95 @@
+.page { min-height: 100vh; display: flex; flex-direction: column; background: var(--egis-light); }
+
+.header {
+  background: var(--egis-navy);
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: 60px;
+  box-shadow: var(--shadow-md);
+}
+
+.logoBar { width: 4px; height: 28px; background: var(--egis-green); border-radius: 2px; }
+.headerInfo { display: flex; flex-direction: column; }
+.candidatLabel { font-size: 0.9rem; font-weight: 600; color: #fff; line-height: 1.2; }
+.scoreLabel { font-size: 0.72rem; color: rgba(255,255,255,0.55); }
+.headerSpacer { flex: 1; }
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1rem 2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  width: 100%;
+  gap: 1.25rem;
+}
+
+.feedbackCard { width: 100%; overflow: hidden; }
+
+.feedbackBanner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+}
+
+.correct { background: var(--correct); }
+.wrong { background: var(--wrong); }
+
+.feedbackIcon { font-size: 1.3rem; color: #fff; font-weight: 700; }
+.feedbackText { font-size: 1.05rem; font-weight: 700; color: #fff; }
+
+.questionRecap { padding: 1.25rem 1.5rem; }
+.questionTexte { font-size: 0.9rem; color: var(--egis-gray); margin-bottom: 1rem; line-height: 1.45; }
+
+.reponsesList { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.repItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--egis-border);
+  background: var(--egis-light);
+  font-size: 0.875rem;
+  color: var(--egis-gray);
+}
+
+.repCorrect { border-color: var(--correct); background: rgba(34,197,94,0.08); color: var(--egis-anthracite); font-weight: 600; }
+.repWrong { border-color: var(--wrong); background: rgba(239,68,68,0.08); color: var(--egis-anthracite); text-decoration: line-through; }
+
+.repLettre {
+  width: 22px; height: 22px;
+  border-radius: 5px;
+  background: var(--egis-border);
+  color: var(--egis-anthracite);
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.repCorrect .repLettre { background: var(--correct); color: #fff; }
+.repWrong .repLettre { background: var(--wrong); color: #fff; }
+
+.checkmark { margin-left: auto; color: var(--correct); font-weight: 700; }
+
+.nextInfo {
+  padding: 0.85rem 1.5rem;
+  border-top: 1px solid var(--egis-border);
+  font-size: 0.8rem;
+  color: var(--egis-gray);
+  font-style: italic;
+  text-align: center;
+}
+
+.top10Wrap { width: 100%; }
+
+.nextBtn { width: 100%; max-width: 300px; display: flex; align-items: center; justify-content: center; }
