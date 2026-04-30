@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useQuiz } from '../context/QuizContext';
+import Signature from './Signature';
 import styles from './Accueil.module.css';
 
 export default function Accueil() {
@@ -101,6 +102,7 @@ export default function Accueil() {
           </div>
         )}
       </main>
+      <Signature />
     </div>
   );
 }

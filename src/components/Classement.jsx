@@ -1,4 +1,5 @@
 import { useQuiz } from '../context/QuizContext';
+import Signature from './Signature';
 import styles from './Classement.module.css';
 
 function formatTemps(s) {
@@ -83,6 +84,7 @@ export default function Classement() {
           </>
         )}
       </main>
+      <Signature />
     </div>
   );
 }

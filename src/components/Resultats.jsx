@@ -1,5 +1,6 @@
 import { useQuiz } from '../context/QuizContext';
 import Top10 from './Top10';
+import Signature from './Signature';
 import styles from './Resultats.module.css';
 
 function formatTemps(s) {
@@ -91,6 +92,7 @@ export default function Resultats() {
           <button className="btn-secondary" onClick={retourAccueil}>Retour à l'accueil</button>
         </div>
       </main>
+      <Signature />
     </div>
   );
 }
