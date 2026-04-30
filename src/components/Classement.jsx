@@ -10,11 +10,11 @@ function formatTemps(s) {
 }
 
 const medals = ['🥇', '🥈', '🥉'];
-const ADMINS = ['charif', 'carlos', 'céline g.', 'celine g.', 'souad'];
+const ADMINS = ['charif', 'carlos', 'céline g.', 'celine g.', 'céline g', 'celine g', 'souad'];
 
 export default function Classement() {
   const { classement, retourAccueil, resetClassement, candidat } = useQuiz();
-  const estAdmin = ADMINS.includes(candidat.toLowerCase());
+  const estAdmin = ADMINS.includes(candidat.trim().toLowerCase());
 
   const [sessions, setSessions]           = useState([]);
   const [sessionOuverte, setSessionOuverte] = useState(null);
