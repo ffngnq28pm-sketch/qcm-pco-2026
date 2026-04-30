@@ -1,21 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 import { useQuiz } from '../context/QuizContext';
 import { getMessagePrenom, getEncouragement } from '../data/messages';
 import styles from './Bienvenue.module.css';
 
 export default function Bienvenue() {
   const { candidat, lancerQuiz } = useQuiz();
-  const [compteur, setCompteur] = useState(5);
 
-  const infoPrenom   = getMessagePrenom(candidat);
-  const encouragement = getEncouragement();
+  const infoPrenom    = getMessagePrenom(candidat);
+  const encouragement = useMemo(() => getEncouragement(), []);
 
-  // Compte à rebours auto → lance le quiz
-  useEffect(() => {
-    if (compteur <= 0) { lancerQuiz(); return; }
-    const t = setTimeout(() => setCompteur(c => c - 1), 1000);
-    return () => clearTimeout(t);
-  }, [compteur, lancerQuiz]);
+  const perso = infoPrenom?.messagePersonnel;
 
   return (
     <div className={styles.page}>
@@ -31,29 +25,26 @@ export default function Bienvenue() {
           </h1>
         </div>
 
-        {/* Etymologie / culture */}
-        {infoPrenom ? (
-          <div className={`${styles.card} ${styles.cardEtym} animate-fadeUp delay-1`}>
-            <div className={styles.cardIconWrap}>
-              <span className={styles.cardIcon}>📖</span>
-              <span className={styles.cardLabel}>Le saviez-vous ?</span>
+        {/* Message basé sur le prénom : perso si dispo, sinon étymologie */}
+        <div className={`${styles.card} ${perso ? styles.cardPerso : styles.cardEtym} animate-fadeUp delay-1`}>
+          <div className={styles.cardIconWrap}>
+            <span className={styles.cardIcon}>{perso ? perso.icone : '📖'}</span>
+            <span className={styles.cardLabel}>{perso ? perso.label : 'Le saviez-vous ?'}</span>
+            {!perso && infoPrenom && (
               <span className={`badge badge-green ${styles.origBadge}`}>{infoPrenom.origine}</span>
-            </div>
-            <p className={styles.etymTexte}>{infoPrenom.texte}</p>
+            )}
           </div>
-        ) : (
-          <div className={`${styles.card} ${styles.cardEtym} animate-fadeUp delay-1`}>
-            <div className={styles.cardIconWrap}>
-              <span className={styles.cardIcon}>✨</span>
-              <span className={styles.cardLabel}>Un prénom unique</span>
-            </div>
-            <p className={styles.etymTexte}>
-              Votre prénom est peut-être rare dans nos archives, mais les personnes qui sortent des sentiers battus sont souvent celles qui marquent leur époque.
-            </p>
-          </div>
-        )}
+          <p className={styles.etymTexte}>
+            {perso
+              ? perso.texte
+              : infoPrenom
+                ? infoPrenom.texte
+                : "Votre prénom est peut-être rare dans nos archives, mais les personnes qui sortent des sentiers battus sont souvent celles qui marquent leur époque."
+            }
+          </p>
+        </div>
 
-        {/* Encouragement */}
+        {/* Encouragement aléatoire */}
         <div className={`${styles.card} ${styles.cardEncourage} animate-fadeUp delay-2`}>
           <div className={styles.cardIconWrap}>
             <span className={styles.cardIcon}>💪</span>
@@ -62,14 +53,11 @@ export default function Bienvenue() {
           <p className={styles.encourageTexte}>« {encouragement} »</p>
         </div>
 
-        {/* Bouton + compteur */}
+        {/* Bouton unique */}
         <div className={`${styles.actionWrap} animate-fadeUp delay-3`}>
           <button className={`btn-primary ${styles.btnLancer}`} onClick={lancerQuiz}>
-            C'est parti ! →
+            Commencer le quiz →
           </button>
-          <span className={styles.autoLabel}>
-            Démarrage automatique dans <strong>{compteur}s</strong>
-          </span>
         </div>
 
       </div>

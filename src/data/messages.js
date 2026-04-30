@@ -88,6 +88,8 @@ export const PRENOMS = {
   renaud:     { origine: "germanique",  texte: "Renaud vient du germanique Reginald — « conseil de prince ». Un prénom de chevaliers et de stratèges." },
   romain:     { origine: "latin",       texte: "Romain vient du latin Romanus — « de Rome ». Porter ce prénom, c'est porter en soi la grandeur de la civilisation occidentale." },
   // S
+  selma:      { origine: "arabe",       texte: "Selma vient de l'arabe سلمى (salmā) — « paix et quiétude ». Un prénom qui porte en lui une promesse de sérénité.",
+    messagePersonnel: { icone: "🌍", label: "Un message pour toi", texte: "Les voyages sont magnifiques et nourrissent l'âme — mais la vraie sagesse, c'est aussi de préparer son avenir avec autant de soin que ses bagages. Profite pleinement, tout en gardant les pieds sur terre. 😊" } },
   samir:      { origine: "arabe",       texte: "Samir vient de l'arabe سمير (samīr) — « celui qui divertit, le bon compagnon de veillée ». Un prénom fait pour les esprits brillants et sociaux." },
   sandrine:   { origine: "grec",        texte: "Sandrine est un diminutif d'Alexandra, du grec — « défenseuse des hommes ». Un prénom de courage et de protection." },
   sébastien:  { origine: "grec",        texte: "Sébastien vient du grec Σεβαστός (Sebastos) — « vénérable, digne de respect ». L'équivalent grec du mot latin Augustus." },
@@ -99,7 +101,8 @@ export const PRENOMS = {
   thierry:    { origine: "germanique",  texte: "Thierry vient du germanique Theodoric — « peuple puissant ». Théodoric le Grand a régné sur un empire qui allait de la Méditerranée aux Alpes." },
   thomas:     { origine: "araméen",     texte: "Thomas vient de l'araméen תְּאוֹמָא (Toma) — « le jumeau ». Thomas Edison, qui avait un jumeau dans l'âme : la science et l'invention." },
   // V
-  valentine:  { origine: "latin",       texte: "Valentine vient du latin Valentinus — « fort, valeureux ». La Saint-Valentin a immortalisé ce prénom comme symbole d'amour et de courage." },
+  valentine:  { origine: "latin",       texte: "Valentine vient du latin Valentinus — « fort, valeureux ». La Saint-Valentin a immortalisé ce prénom comme symbole d'amour et de courage.",
+    messagePersonnel: { icone: "💍", label: "Un message pour toi", texte: "Félicitations pour ton futur mariage, Valentine ! Que cette belle aventure t'apporte tout ce que tu mérites : amour, complicité et bonheur sans fin. Je t'adore. 💚" } },
   valérie:    { origine: "latin",       texte: "Valérie vient du latin Valeria — « forte, vigoureuse ». La gens Valeria était l'une des plus nobles familles de la Rome antique." },
   véronique:  { origine: "grec/latin",  texte: "Véronique vient du grec Berenikē — « qui porte la victoire ». Une étymologie qui annonce le succès !" },
   virginie:   { origine: "latin",       texte: "Virginie vient du latin Virginia — « vierge, pure ». Virginie de Paul et Virginie, le roman de Bernardin de Saint-Pierre, a fait rêver toute l'Europe." },
