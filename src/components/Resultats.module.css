@@ -146,7 +146,47 @@
 .detailTexte { flex: 1; line-height: 1.35; color: var(--egis-anthracite); }
 .detailCat { font-size: 0.62rem; flex-shrink: 0; background: var(--egis-light); color: var(--egis-gray); border: 1px solid var(--egis-border); padding: 0.15rem 0.5rem; border-radius: 10px; }
 
-.top10Wrap { width: 100%; animation: fadeUp 0.5s 0.2s cubic-bezier(0.4,0,0.2,1) both; }
+/* Citation */
+.citationCard {
+  width: 100%;
+  padding: 1.5rem 1.75rem;
+  background: linear-gradient(135deg, #0b1e2d, #163045);
+  border: none;
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp 0.5s 0.2s cubic-bezier(0.4,0,0.2,1) both;
+}
+
+.citationGuillemet {
+  position: absolute;
+  top: -0.5rem; left: 1rem;
+  font-size: 5rem;
+  color: rgba(122,193,67,0.2);
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.citationTexte {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.7;
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0.75rem;
+}
+
+.citationAuteur {
+  font-size: 0.78rem;
+  color: var(--egis-green);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  display: block;
+  text-align: right;
+}
+
+.top10Wrap { width: 100%; animation: fadeUp 0.5s 0.3s cubic-bezier(0.4,0,0.2,1) both; }
 
 .actions {
   display: flex;

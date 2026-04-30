@@ -1,5 +1,6 @@
 import { useQuiz, PHASES } from './context/QuizContext';
 import Accueil from './components/Accueil';
+import Bienvenue from './components/Bienvenue';
 import Quiz from './components/Quiz';
 import InterQuestion from './components/InterQuestion';
 import Resultats from './components/Resultats';
@@ -11,11 +12,12 @@ export default function App() {
 
   return (
     <>
-      {phase === PHASES.ACCUEIL && <Accueil />}
-      {phase === PHASES.QUIZ && <Quiz />}
+      {phase === PHASES.ACCUEIL       && <Accueil />}
+      {phase === PHASES.BIENVENUE     && <Bienvenue />}
+      {phase === PHASES.QUIZ          && <Quiz />}
       {phase === PHASES.INTER_QUESTION && <InterQuestion />}
-      {phase === PHASES.RESULTATS && <Resultats />}
-      {phase === PHASES.CLASSEMENT && <Classement />}
+      {phase === PHASES.RESULTATS     && <Resultats />}
+      {phase === PHASES.CLASSEMENT    && <Classement />}
     </>
   );
 }

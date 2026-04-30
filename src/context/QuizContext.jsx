@@ -5,6 +5,7 @@ const QuizContext = createContext(null);
 
 export const PHASES = {
   ACCUEIL: 'accueil',
+  BIENVENUE: 'bienvenue',
   QUIZ: 'quiz',
   INTER_QUESTION: 'inter_question',
   RESULTATS: 'resultats',
@@ -31,7 +32,7 @@ function quizReducer(state, action) {
     case 'DEMARRER_QUIZ':
       return {
         ...state,
-        phase: PHASES.QUIZ,
+        phase: PHASES.BIENVENUE,
         candidat: action.candidat,
         questionIndex: 0,
         reponseSelectionnee: null,
@@ -42,6 +43,9 @@ function quizReducer(state, action) {
         derniereReponseCorrecte: null,
         entreeId: null
       };
+
+    case 'LANCER_QUIZ':
+      return { ...state, phase: PHASES.QUIZ };
 
     case 'VALIDER_REPONSE': {
       const question = questions[state.questionIndex];
@@ -125,6 +129,10 @@ export function QuizProvider({ children }) {
     dispatch({ type: 'DEMARRER_QUIZ', candidat });
   }, []);
 
+  const lancerQuiz = useCallback(() => {
+    dispatch({ type: 'LANCER_QUIZ' });
+  }, []);
+
   const validerReponse = useCallback((reponse) => {
     dispatch({ type: 'VALIDER_REPONSE', reponse });
   }, []);
@@ -202,6 +210,7 @@ export function QuizProvider({ children }) {
       CONFIG,
       positionClassement,
       demarrerQuiz,
+      lancerQuiz,
       validerReponse,
       questionSuivante,
       terminerQuiz,

@@ -1,6 +1,7 @@
 import { useQuiz } from '../context/QuizContext';
 import Top10 from './Top10';
 import Signature from './Signature';
+import { getCitationResultat } from '../data/messages';
 import styles from './Resultats.module.css';
 
 function formatTemps(s) {
@@ -29,6 +30,7 @@ export default function Resultats() {
   const niveau = getNiveau(pct);
   const mauvaises = total - score;
   const dashOffset = CIRCUMFERENCE - (pct / 100) * CIRCUMFERENCE;
+  const citation = getCitationResultat(pct);
 
   return (
     <div className={styles.page}>
@@ -103,6 +105,13 @@ export default function Resultats() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Citation philosophique */}
+        <div className={`card ${styles.citationCard}`}>
+          <span className={styles.citationGuillemet}>"</span>
+          <p className={styles.citationTexte}>{citation.texte}</p>
+          <span className={styles.citationAuteur}>— {citation.auteur}</span>
         </div>
 
         <div className={styles.top10Wrap}>
