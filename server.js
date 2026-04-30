@@ -36,7 +36,7 @@ app.post('/api/classement', (req, res) => {
   classement.push(entry);
   classement.sort((a, b) => b.score - a.score || a.temps - b.temps);
   ecrire(DATA_FILE, classement);
-  res.json(classement);
+  res.json({ classement, entreeId: entry.id });
 });
 
 app.delete('/api/classement', (req, res) => {

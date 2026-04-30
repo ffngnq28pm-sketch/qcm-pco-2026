@@ -6,7 +6,7 @@ export function useTimer() {
   const intervalRef = useRef(null);
 
   useEffect(() => {
-    if (phase !== PHASES.QUIZ && phase !== PHASES.INTER_QUESTION) {
+    if (phase !== PHASES.QUIZ) {
       clearInterval(intervalRef.current);
       return;
     }

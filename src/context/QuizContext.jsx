@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useCallback, useEffect, useRef } from 'react';
+import { createContext, useContext, useReducer, useCallback, useEffect, useRef, useMemo } from 'react';
 import { questions, CONFIG } from '../data/questions';
 
 const QuizContext = createContext(null);
@@ -100,6 +100,8 @@ function quizReducer(state, action) {
 export function QuizProvider({ children }) {
   const [state, dispatch] = useReducer(quizReducer, initialState);
   const pollingRef = useRef(null);
+  const stateRef = useRef(state);
+  useEffect(() => { stateRef.current = state; }, [state]);
 
   // Charger le classement depuis l'API
   async function fetchClassement() {
@@ -142,15 +144,15 @@ export function QuizProvider({ children }) {
   }, []);
 
   const terminerQuiz = useCallback(async () => {
-    // Calculer le temps avant de dispatcher pour avoir tempsDebut encore dispo
-    const tempsTotal = Math.round((Date.now() - state.tempsDebut) / 1000);
+    const { candidat, score, tempsDebut, classement: cls } = stateRef.current;
+    const tempsTotal = Math.round((Date.now() - tempsDebut) / 1000);
     dispatch({ type: 'TERMINER_QUIZ' });
 
     const entree = {
-      nom: state.candidat,
-      score: state.score,
+      nom: candidat,
+      score,
       total: questions.length,
-      pourcentage: Math.round((state.score / questions.length) * 100),
+      pourcentage: Math.round((score / questions.length) * 100),
       temps: tempsTotal,
       date: new Date().toLocaleDateString('fr-FR')
     };
@@ -162,16 +164,19 @@ export function QuizProvider({ children }) {
         body: JSON.stringify(entree)
       });
       if (res.ok) {
-        const classement = await res.json();
+        const { classement, entreeId } = await res.json();
         dispatch({ type: 'SYNC_CLASSEMENT', classement });
+        dispatch({ type: 'SET_ENTREE_ID', id: entreeId });
       }
     } catch {
       // Fallback local si pas de serveur
-      const classement = [...state.classement, { ...entree, id: Date.now() }]
+      const nouvelleEntree = { ...entree, id: Date.now() };
+      const classement = [...cls, nouvelleEntree]
         .sort((a, b) => b.score - a.score || a.temps - b.temps);
       dispatch({ type: 'SYNC_CLASSEMENT', classement });
+      dispatch({ type: 'SET_ENTREE_ID', id: nouvelleEntree.id });
     }
-  }, [state.candidat, state.score, state.tempsDebut, state.classement]);
+  }, []);
 
   const mettreAJourTemps = useCallback((tempsRestant) => {
     dispatch({ type: 'METTRE_A_JOUR_TEMPS', tempsRestant });
@@ -194,13 +199,12 @@ export function QuizProvider({ children }) {
     }
   }, []);
 
-  // Position du candidat actuel dans le classement
-  const positionClassement = (() => {
-    const idx = state.classement.findIndex(
-      e => e.nom === state.candidat && e.score === state.score
-    );
+  // Position du candidat actuel dans le classement (par id unique)
+  const positionClassement = useMemo(() => {
+    if (!state.entreeId) return 0;
+    const idx = state.classement.findIndex(e => e.id === state.entreeId);
     return idx >= 0 ? idx + 1 : 0;
-  })();
+  }, [state.entreeId, state.classement]);
 
   return (
     <QuizContext.Provider value={{

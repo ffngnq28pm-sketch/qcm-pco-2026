@@ -10,7 +10,7 @@ function formatTemps(s) {
 }
 
 const medals = ['🥇', '🥈', '🥉'];
-const ADMINS = ['charif', 'carlos', 'céline', 'celine', 'souad'];
+const ADMINS = ['charif', 'carlos', 'céline g.', 'celine g.', 'souad'];
 
 export default function Classement() {
   const { classement, retourAccueil, resetClassement, candidat } = useQuiz();
