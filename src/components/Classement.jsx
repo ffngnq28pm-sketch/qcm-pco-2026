@@ -92,6 +92,7 @@ export default function Classement() {
           </>
         )}
         <button className="btn-primary" onClick={retourAccueil}>← Accueil</button>
+        <Signature />
       </header>
 
       <main className={styles.main}>
@@ -220,7 +221,6 @@ export default function Classement() {
           </div>
         )}
       </main>
-      <Signature />
     </div>
   );
 }

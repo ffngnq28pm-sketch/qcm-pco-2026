@@ -34,6 +34,7 @@ export default function Accueil() {
               Classement ({classement.length})
             </button>
           )}
+          <Signature />
         </header>
 
         <div className={styles.heroContent}>
@@ -127,7 +128,6 @@ export default function Accueil() {
         )}
       </div>
 
-      <Signature />
     </div>
   );
 }

@@ -63,6 +63,8 @@ export default function Resultats() {
           <div className={styles.headerTitle}>Résultats</div>
           <div className={styles.headerSub}>{candidat}</div>
         </div>
+        <div className={styles.headerSpacer} />
+        <Signature />
       </header>
 
       <main className={styles.main}>
@@ -149,7 +151,6 @@ export default function Resultats() {
           <button className="btn-secondary" onClick={retourAccueil}>← Accueil</button>
         </div>
       </main>
-      <Signature />
     </div>
   );
 }

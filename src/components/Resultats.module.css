@@ -13,6 +13,7 @@
 .logoBar { width: 3px; height: 26px; background: linear-gradient(to bottom, var(--egis-green), var(--egis-green-dark)); border-radius: 2px; }
 .headerTitle { font-size: 0.95rem; font-weight: 800; color: #fff; letter-spacing: -0.01em; }
 .headerSub { font-size: 0.72rem; color: rgba(255,255,255,0.5); margin-top: 1px; }
+.headerSpacer { flex: 1; }
 
 .main {
   flex: 1;
