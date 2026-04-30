@@ -33,8 +33,22 @@ export default function Classement() {
 
   const [sessions, setSessions]           = useState([]);
   const [sessionOuverte, setSessionOuverte] = useState(null);
+  const [progression, setProgression]       = useState([]);
 
   useEffect(() => { chargerSessions(); }, []);
+
+  // Polling progression toutes les 3 secondes
+  useEffect(() => {
+    const fetchProgression = async () => {
+      try {
+        const res = await fetch('/api/progression');
+        if (res.ok) setProgression(await res.json());
+      } catch {}
+    };
+    fetchProgression();
+    const interval = setInterval(fetchProgression, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   async function chargerSessions() {
     try {
@@ -96,6 +110,37 @@ export default function Classement() {
       </header>
 
       <main className={styles.main}>
+
+        {/* ── Suivi en temps réel ── */}
+        {progression.length > 0 && (
+          <div className={`card ${styles.suiviCard}`}>
+            <div className={styles.suiviHeader}>
+              <span className={styles.suiviIcon}>📡</span>
+              <h2 className={styles.suiviTitle}>Suivi en temps réel</h2>
+              <span className={styles.suiviBadge}>{progression.filter(p => p.statut === 'en_cours').length} en cours</span>
+            </div>
+            <div className={styles.suiviList}>
+              {[...progression]
+                .sort((a, b) => (a.statut === 'termine' ? 1 : -1) - (b.statut === 'termine' ? 1 : -1) || b.question - a.question)
+                .map(p => {
+                  const pct = Math.round((p.question / p.total) * 100);
+                  return (
+                    <div key={p.nom} className={styles.suiviRow}>
+                      <span className={styles.suiviNom}>{p.nom}</span>
+                      <div className={styles.suiviBarWrap}>
+                        <div className={styles.suiviBar} style={{ width: `${pct}%`, background: p.statut === 'termine' ? 'var(--egis-green)' : 'var(--egis-green-dark)' }} />
+                      </div>
+                      <span className={styles.suiviInfo}>Q{p.question}/{p.total}</span>
+                      <span className={styles.suiviScore}>{p.score} pt{p.score > 1 ? 's' : ''}</span>
+                      <span className={`${styles.suiviStatut} ${p.statut === 'termine' ? styles.suiviTermine : styles.suiviEnCours}`}>
+                        {p.statut === 'termine' ? '✓ Terminé' : '⏳ En cours'}
+                      </span>
+                    </div>
+                  );
+                })}
+            </div>
+          </div>
+        )}
 
         {/* ── Classement actif ── */}
         {classement.length === 0 ? (

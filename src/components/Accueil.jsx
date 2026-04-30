@@ -29,11 +29,9 @@ export default function Accueil() {
             <div className={styles.headerSub}>Plateforme de formation interne</div>
           </div>
           <div className={styles.headerSpacer} />
-          {classement.length > 0 && (
-            <button className={`btn-ghost ${styles.clsBtn}`} onClick={voirClassement}>
-              Classement ({classement.length})
-            </button>
-          )}
+          <button className={`btn-ghost ${styles.clsBtn}`} onClick={voirClassement}>
+            {classement.length > 0 ? `Classement (${classement.length})` : 'Suivi'}
+          </button>
           <Signature />
         </header>
 

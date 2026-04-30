@@ -127,6 +127,25 @@ export function QuizProvider({ children }) {
     return () => clearInterval(pollingRef.current);
   }, [state.phase]);
 
+  // Signaler la progression au serveur à chaque changement de question
+  useEffect(() => {
+    if (!state.candidat) return;
+    const enCours = state.phase === PHASES.QUIZ || state.phase === PHASES.INTER_QUESTION;
+    const termine = state.phase === PHASES.RESULTATS || state.phase === PHASES.CLASSEMENT;
+    if (!enCours && !termine) return;
+    fetch('/api/progression', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nom: state.candidat,
+        question: termine ? questions.length : state.questionIndex + 1,
+        total: questions.length,
+        score: state.score,
+        statut: termine ? 'termine' : 'en_cours'
+      })
+    }).catch(() => {});
+  }, [state.phase, state.questionIndex, state.candidat, state.score]);
+
   const demarrerQuiz = useCallback((candidat) => {
     dispatch({ type: 'DEMARRER_QUIZ', candidat });
   }, []);
@@ -194,6 +213,7 @@ export function QuizProvider({ children }) {
     try {
       const res = await fetch('/api/classement', { method: 'DELETE' });
       if (res.ok) dispatch({ type: 'SYNC_CLASSEMENT', classement: [] });
+      await fetch('/api/progression', { method: 'DELETE' }).catch(() => {});
     } catch {
       dispatch({ type: 'SYNC_CLASSEMENT', classement: [] });
     }

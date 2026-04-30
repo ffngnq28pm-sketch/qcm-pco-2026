@@ -77,6 +77,23 @@ app.delete('/api/sessions', (req, res) => {
   res.json([]);
 });
 
+// ── Progression en temps réel (in-memory) ────────────
+const progression = {};
+
+app.get('/api/progression', (req, res) => res.json(Object.values(progression)));
+
+app.post('/api/progression', (req, res) => {
+  const { nom, question, total, score, statut } = req.body;
+  if (!nom) return res.status(400).json({ error: 'nom requis' });
+  progression[nom] = { nom, question, total, score, statut, maj: Date.now() };
+  res.json({ ok: true });
+});
+
+app.delete('/api/progression', (req, res) => {
+  Object.keys(progression).forEach(k => delete progression[k]);
+  res.json({ ok: true });
+});
+
 // ── Frontend ──────────────────────────────────────────
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));

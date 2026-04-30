@@ -133,7 +133,7 @@ export default function Resultats() {
         </div>
 
         {/* Citation philosophique */}
-        <div className={`card ${styles.citationCard}`}>
+        <div className={styles.citationCard}>
           <span className={styles.citationGuillemet}>"</span>
           <p className={styles.citationTexte}>{citation.texte}</p>
           <span className={styles.citationAuteur}>— {citation.auteur}</span>
