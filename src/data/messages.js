@@ -186,13 +186,21 @@ export const CITATIONS_RESULTATS = {
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 export function getMessagePrenom(prenom) {
-  const cle = prenom.trim().toLowerCase()
-    .normalize('NFD').replace(/[̀-ͯ]/g, '') // enlève les accents pour la clé
+  const normaliser = s => s.trim().toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z]/g, '');
 
-  // Chercher avec accents d'abord, puis sans
-  const entree = PRENOMS[prenom.trim().toLowerCase()] || PRENOMS[cle];
-  return entree || null;
+  const cleNormalisee = normaliser(prenom);
+
+  // Cherche d'abord par correspondance exacte (avec accents)
+  const directe = PRENOMS[prenom.trim().toLowerCase()];
+  if (directe) return directe;
+
+  // Sinon cherche en normalisant aussi les clés (ex: "anais" → "anaïs")
+  for (const [cle, valeur] of Object.entries(PRENOMS)) {
+    if (normaliser(cle) === cleNormalisee) return valeur;
+  }
+  return null;
 }
 
 export function getEncouragement() {
