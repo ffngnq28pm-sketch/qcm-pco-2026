@@ -11,7 +11,7 @@ export default function Accueil() {
   function handleSubmit(e) {
     e.preventDefault();
     const trimmed = nom.trim();
-    if (!trimmed) { setErreur('Veuillez saisir votre nom ou identifiant.'); return; }
+    if (!trimmed) { setErreur('Veuillez saisir votre prénom.'); return; }
     if (trimmed.length < 2) { setErreur('Au moins 2 caractères requis.'); return; }
     demarrerQuiz(trimmed);
   }
@@ -66,12 +66,12 @@ export default function Accueil() {
         <div className={`card ${styles.formCard}`}>
           <div className={styles.formHeader}>
             <h2 className={styles.formTitle}>Accéder au quiz</h2>
-            <p className={styles.formDesc}>Saisissez votre nom pour commencer l'évaluation.</p>
+            <p className={styles.formDesc}>Saisissez votre prénom pour commencer l'évaluation.</p>
           </div>
 
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.inputWrap}>
-              <label htmlFor="nom" className={styles.label}>Nom / Identifiant</label>
+              <label htmlFor="nom" className={styles.label}>Prénom</label>
               <div className={styles.inputGroup}>
                 <span className={styles.inputIcon}>👤</span>
                 <input

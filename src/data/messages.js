@@ -5,6 +5,7 @@ export const PRENOMS = {
   alexis:     { origine: "grec",        texte: "Alexis vient du grec αλέξειν (alexein) — « défendre, protéger ». Une étymologie de chef !" },
   alexandre:  { origine: "grec",        texte: "Alexandre vient du grec Ἀλέξανδρος — « défenseur des hommes ». Alexandre le Grand a conquis la moitié du monde connu à 32 ans." },
   amina:      { origine: "arabe",       texte: "Amina vient de l'arabe أمينة (amīna) — « fidèle, digne de confiance ». Un prénom qui évoque l'intégrité absolue." },
+  aminata:    { origine: "mandé",       texte: "Aminata est la forme ouest-africaine d'Amina — « fidèle, digne de confiance ». Un prénom royal au Sénégal, en Guinée et au Mali, porté avec fierté depuis des générations." },
   anaïs:      { origine: "hébreu",      texte: "Anaïs est une variante occitane d'Anne, issu de l'hébreu Hannah — « la grâce ». Un prénom qui chante autant qu'il inspire." },
   antoine:    { origine: "latin",       texte: "Antoine vient du latin Antonius, dont le sens exact reste mystérieux — peut-être « inestimable ». Ce qui ne l'empêche pas d'être précieux !" },
   audrey:     { origine: "anglais",     texte: "Audrey vient du vieil anglais Æðelþryð — « noble force ». Audrey Hepburn en a fait l'un des prénoms les plus élégants du 20e siècle." },
@@ -53,6 +54,8 @@ export const PRENOMS = {
   // K
   karim:      { origine: "arabe",       texte: "Karim vient de l'arabe كريم (karīm) — « généreux, noble ». L'un des 99 noms d'Allah dans la tradition islamique." },
   kevin:      { origine: "irlandais",   texte: "Kevin vient du gaélique Caoimhín — « né beau ». Saint Kevin d'Irlande vivait en harmonie avec la nature — des oiseaux nichaient dans ses mains ouvertes." },
+  kofi:       { origine: "akan (Ghana)", texte: "Kofi vient de l'akan du Ghana — « né un vendredi ». Dans la tradition akan, chaque enfant porte le nom du jour de sa naissance. Kofi Annan, ancien Secrétaire général de l'ONU, en est l'ambassadeur le plus illustre." },
+  kwame:      { origine: "akan (Ghana)", texte: "Kwame vient de l'akan du Ghana — « né un samedi ». Kwame Nkrumah, père de l'indépendance du Ghana, a fait de ce prénom un symbole de liberté et de panafricanisme." },
   // L
   laure:      { origine: "latin",       texte: "Laure vient du latin Laura — « couronnée de laurier ». Le poète Pétrarque lui a dédié plus de 300 sonnets. Inspirer la poésie, c'est un don !" },
   laurent:    { origine: "latin",       texte: "Laurent vient du latin Laurentius — « couronné de laurier », symbole de victoire et de gloire dans la Rome antique." },
@@ -60,6 +63,8 @@ export const PRENOMS = {
   lucie:      { origine: "latin",       texte: "Lucie vient du latin Lucia, dérivé de lux — « la lumière ». Sainte Lucie est fêtée le 13 décembre, le jour le plus sombre de l'année pour éclairer les ténèbres." },
   luc:        { origine: "grec",        texte: "Luc vient du grec Λουκᾶς (Loukas) — « celui qui vient de Lucanie » ou simplement « lumière ». Saint Luc était aussi peintre — le patron des artistes !" },
   // M
+  mamadou:    { origine: "peul/mandé",   texte: "Mamadou est la forme ouest-africaine de Muhammad — « digne de louanges ». L'un des prénoms les plus portés d'Afrique de l'Ouest, symbole de foi et de caractère." },
+  moussa:     { origine: "arabe/africain", texte: "Moussa est la forme arabe et africaine de Moïse, de l'hébreu Moshe — « sauvé des eaux ». Un prénom prophétique porté depuis l'Afrique du Nord jusqu'au Sahel." },
   marc:       { origine: "latin",       texte: "Marc vient du latin Marcus, lié à Mars — dieu romain de la guerre. Un prénom de guerrier qui a aussi donné « marque » et « marquis »." },
   marguerite: { origine: "latin",       texte: "Marguerite vient du latin Margarita — « la perle ». Comme la fleur et la gemme, un prénom d'une beauté discrète et précieuse." },
   marie:      { origine: "hébreu",      texte: "Marie vient de l'hébreu Myriam — « bien-aimée » ou « mer d'amertume ». C'est le prénom féminin le plus porté de l'histoire de l'humanité." },
@@ -74,6 +79,8 @@ export const PRENOMS = {
   nadia:      { origine: "slave",       texte: "Nadia vient du slave Nadezhda — « espoir ». Nadia Comaneci a obtenu le premier 10 parfait de l'histoire de la gymnastique. L'espoir réalisé !" },
   nathalie:   { origine: "latin",       texte: "Nathalie vient du latin Natalia — « née à Noël ». Un prénom qui porte en lui la lumière des fêtes et le renouveau." },
   nicolas:    { origine: "grec",        texte: "Nicolas vient du grec Νικόλαος (Nikolaos) — « victoire du peuple ». Saint Nicolas, le vrai père du Père Noël, donnait des cadeaux en secret." },
+  // O
+  oumar:      { origine: "arabe/africain", texte: "Oumar est la forme ouest-africaine d'Omar, de l'arabe عمر (ʿumar) — « qui vit longtemps, florissant ». Un prénom de sage et de bâtisseur." },
   // P
   pascal:     { origine: "hébreu",      texte: "Pascal vient de l'hébreu Pesah — « la Pâque ». Blaise Pascal fut mathématicien, physicien et philosophe — et inventeur de la première machine à calculer !" },
   patrick:    { origine: "latin",       texte: "Patrick vient du latin Patricius — « noble, patricien ». Saint Patrick a évangélisé l'Irlande en utilisant le trèfle pour expliquer la Trinité. Un grand pédagogue !" },
@@ -86,12 +93,15 @@ export const PRENOMS = {
   raphaël:    { origine: "hébreu",      texte: "Raphaël vient de l'hébreu רָפָאֵל (Refa'el) — « Dieu a guéri ». Archange guérisseur et patron des artistes, Raphaël a aussi donné son nom au peintre de la Renaissance." },
   rémi:       { origine: "latin",       texte: "Rémi vient du latin Remigius — « rameur ». Saint Rémi a baptisé Clovis et changé le cours de l'histoire de France." },
   renaud:     { origine: "germanique",  texte: "Renaud vient du germanique Reginald — « conseil de prince ». Un prénom de chevaliers et de stratèges." },
+  rokia:      { origine: "bambara/mandé", texte: "Rokia vient de l'arabe رُقَيَّة (Ruqayya) — « qui s'élève, qui monte vers les hauteurs ». Très répandu au Mali et au Sénégal, c'est un prénom de grâce et d'ambition." },
   romain:     { origine: "latin",       texte: "Romain vient du latin Romanus — « de Rome ». Porter ce prénom, c'est porter en soi la grandeur de la civilisation occidentale." },
   // S
   selma:      { origine: "arabe",       texte: "Selma vient de l'arabe سلمى (salmā) — « paix et quiétude ». Un prénom qui porte en lui une promesse de sérénité.",
     messagePersonnel: { icone: "🌍", label: "Un message pour toi", texte: "Les voyages sont magnifiques et nourrissent l'âme — mais la vraie sagesse, c'est aussi de préparer son avenir avec autant de soin que ses bagages. Profite pleinement, tout en gardant les pieds sur terre. 😊" } },
   samir:      { origine: "arabe",       texte: "Samir vient de l'arabe سمير (samīr) — « celui qui divertit, le bon compagnon de veillée ». Un prénom fait pour les esprits brillants et sociaux." },
   sandrine:   { origine: "grec",        texte: "Sandrine est un diminutif d'Alexandra, du grec — « défenseuse des hommes ». Un prénom de courage et de protection." },
+  seydou:     { origine: "peul",          texte: "Seydou est la forme peule de Saïd, de l'arabe سَعِيد (saʿīd) — « heureux, fortuné ». Un prénom lumineux porté par des artistes et des leaders à travers toute l'Afrique de l'Ouest." },
+  souleymane: { origine: "arabe/africain", texte: "Souleymane est la forme ouest-africaine de Salomon, de l'hébreu Shlomo — « le pacifique ». Le roi Salomon était réputé pour sa sagesse infinie — un héritage que ce prénom perpétue avec élégance." },
   sébastien:  { origine: "grec",        texte: "Sébastien vient du grec Σεβαστός (Sebastos) — « vénérable, digne de respect ». L'équivalent grec du mot latin Augustus." },
   sophie:     { origine: "grec",        texte: "Sophie vient du grec σοφία (sophia) — « la sagesse ». La philosophie elle-même (philo + sophia) signifie littéralement « amour de la sagesse »." },
   souad:      { origine: "arabe",       texte: "Souad vient de l'arabe سعاد (su'ād) — « le bonheur, la prospérité ». Un prénom qui porte en lui la promesse d'une vie épanouie." },
