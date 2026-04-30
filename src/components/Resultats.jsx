@@ -10,6 +10,29 @@ function formatTemps(s) {
   return `${m}:${sec}`;
 }
 
+function telechargerResultatsCSV({ candidat, score, total, pct, tempsTotal, reponses, questions, positionClassement }) {
+  const lignes = [
+    ['Prénom', 'Score', 'Total', 'Pourcentage', 'Temps', 'Position'],
+    [candidat, score, total, `${pct}%`, formatTemps(tempsTotal), positionClassement > 0 ? `#${positionClassement}` : '-'],
+    [],
+    ['#', 'Question', 'Catégorie', 'Résultat'],
+    ...reponses.map((r, i) => [
+      i + 1,
+      `"${questions[i].texte.replace(/"/g, '""')}"`,
+      questions[i].categorie,
+      r.correcte ? 'Correcte' : 'Incorrecte'
+    ])
+  ];
+  const csv = lignes.map(l => l.join(';')).join('\n');
+  const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `resultats_${candidat}_QCM_PCO_2026.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 function getNiveau(pct) {
   if (pct >= 80) return { label: 'Excellent', color: '#16a34a' };
   if (pct >= 60) return { label: 'Bien',      color: '#7AC143' };
@@ -120,6 +143,9 @@ export default function Resultats() {
 
         <div className={styles.actions}>
           <button className="btn-primary" onClick={voirClassement}>Classement complet →</button>
+          <button className="btn-ghost" onClick={() => telechargerResultatsCSV({ candidat, score, total, pct, tempsTotal, reponses, questions, positionClassement })}>
+            📥 Télécharger mes résultats
+          </button>
           <button className="btn-secondary" onClick={retourAccueil}>← Accueil</button>
         </div>
       </main>

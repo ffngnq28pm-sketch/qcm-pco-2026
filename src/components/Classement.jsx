@@ -9,6 +9,21 @@ function formatTemps(s) {
   return `${m}:${sec}`;
 }
 
+function telechargerClassementCSV(classement) {
+  const lignes = [
+    ['#', 'Prénom', 'Score', 'Total', 'Pourcentage', 'Temps', 'Date'],
+    ...classement.map((e, i) => [i + 1, e.nom, e.score, e.total, `${e.pourcentage}%`, formatTemps(e.temps), e.date])
+  ];
+  const csv = lignes.map(l => l.join(';')).join('\n');
+  const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `classement_QCM_PCO_2026.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 const medals = ['🥇', '🥈', '🥉'];
 const ADMINS = ['charif', 'carlos', 'céline g.', 'celine g.', 'céline g', 'celine g', 'souad'];
 
@@ -67,9 +82,14 @@ export default function Classement() {
         </div>
         <div className={styles.headerSpacer} />
         {estAdmin && classement.length > 0 && (
-          <button className={`btn-ghost ${styles.resetBtn}`} onClick={handleReset}>
-            💾 Sauvegarder &amp; Réinitialiser
-          </button>
+          <>
+            <button className={`btn-ghost ${styles.resetBtn}`} onClick={() => telechargerClassementCSV(classement)}>
+              📥 Exporter CSV
+            </button>
+            <button className={`btn-ghost ${styles.resetBtn}`} onClick={handleReset}>
+              💾 Sauvegarder &amp; Réinitialiser
+            </button>
+          </>
         )}
         <button className="btn-primary" onClick={retourAccueil}>← Accueil</button>
       </header>
