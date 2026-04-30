@@ -78,7 +78,7 @@ export default function Accueil() {
                   id="nom"
                   type="text"
                   className={styles.input}
-                  placeholder="Ex : Marie Dupont"
+                  placeholder="Ex : Marie"
                   value={nom}
                   onChange={e => { setNom(e.target.value); setErreur(''); }}
                   maxLength={60}
