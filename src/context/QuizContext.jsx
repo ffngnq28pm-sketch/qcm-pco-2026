@@ -89,6 +89,9 @@ function quizReducer(state, action) {
     case 'VOIR_CLASSEMENT':
       return { ...state, phase: PHASES.CLASSEMENT };
 
+    case 'ACCEDER_CLASSEMENT':
+      return { ...state, phase: PHASES.CLASSEMENT, candidat: action.candidat || state.candidat };
+
     case 'RETOUR_ACCUEIL':
       return { ...initialState, classement: state.classement };
 
@@ -205,6 +208,10 @@ export function QuizProvider({ children }) {
     dispatch({ type: 'VOIR_CLASSEMENT' });
   }, []);
 
+  const accederClassement = useCallback((candidat) => {
+    dispatch({ type: 'ACCEDER_CLASSEMENT', candidat });
+  }, []);
+
   const retourAccueil = useCallback(() => {
     dispatch({ type: 'RETOUR_ACCUEIL' });
   }, []);
@@ -240,6 +247,7 @@ export function QuizProvider({ children }) {
       terminerQuiz,
       mettreAJourTemps,
       voirClassement,
+      accederClassement,
       retourAccueil,
       resetClassement
     }}>

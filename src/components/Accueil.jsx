@@ -4,7 +4,7 @@ import Signature from './Signature';
 import styles from './Accueil.module.css';
 
 export default function Accueil() {
-  const { demarrerQuiz, voirClassement, classement, questions, CONFIG } = useQuiz();
+  const { demarrerQuiz, voirClassement, accederClassement, classement, questions, CONFIG } = useQuiz();
   const [nom, setNom] = useState('');
   const [erreur, setErreur] = useState('');
 
@@ -29,7 +29,7 @@ export default function Accueil() {
             <div className={styles.headerSub}>Plateforme de formation interne</div>
           </div>
           <div className={styles.headerSpacer} />
-          <button className={`btn-ghost ${styles.clsBtn}`} onClick={voirClassement}>
+          <button className={`btn-ghost ${styles.clsBtn}`} onClick={() => nom.trim() ? accederClassement(nom.trim()) : voirClassement()}>
             {classement.length > 0 ? `Classement (${classement.length})` : 'Suivi'}
           </button>
           <Signature />
