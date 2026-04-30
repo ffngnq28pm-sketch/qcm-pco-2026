@@ -10,11 +10,13 @@ function formatTemps(s) {
 }
 
 function getNiveau(pct) {
-  if (pct >= 80) return { label: 'Excellent', color: '#22c55e' };
-  if (pct >= 60) return { label: 'Bien', color: '#7AC143' };
-  if (pct >= 40) return { label: 'Passable', color: '#f59e0b' };
-  return { label: 'À revoir', color: '#ef4444' };
+  if (pct >= 80) return { label: 'Excellent', color: '#16a34a' };
+  if (pct >= 60) return { label: 'Bien',      color: '#7AC143' };
+  if (pct >= 40) return { label: 'Passable',  color: '#f59e0b' };
+  return               { label: 'À revoir',   color: '#ef4444' };
 }
+
+const CIRCUMFERENCE = 2 * Math.PI * 52; // ≈ 326.7
 
 export default function Resultats() {
   const {
@@ -26,50 +28,67 @@ export default function Resultats() {
   const pct = Math.round((score / total) * 100);
   const niveau = getNiveau(pct);
   const mauvaises = total - score;
+  const dashOffset = CIRCUMFERENCE - (pct / 100) * CIRCUMFERENCE;
 
   return (
     <div className={styles.page}>
       <header className={styles.header}>
         <div className={styles.logoBar} />
-        <span className={styles.headerTitle}>Résultats — {candidat}</span>
+        <div>
+          <div className={styles.headerTitle}>Résultats</div>
+          <div className={styles.headerSub}>{candidat}</div>
+        </div>
       </header>
 
       <main className={styles.main}>
+        {/* Score card */}
         <div className={`card ${styles.scoreCard}`}>
-          <div className={styles.scoreCircleWrap}>
-            <div className={styles.scoreCircle} style={{ '--pct': `${pct}%`, '--color': niveau.color }}>
-              <span className={styles.scoreNum}>{pct}%</span>
-              <span className={styles.scoreNiveau} style={{ color: niveau.color }}>{niveau.label}</span>
+          <div className={styles.scoreTop}>
+            <div className={styles.circleWrap}>
+              <svg viewBox="0 0 120 120" className={styles.svg}>
+                <circle cx="60" cy="60" r="52" fill="none" stroke="#e2e8f0" strokeWidth="10" />
+                <circle
+                  cx="60" cy="60" r="52"
+                  fill="none"
+                  stroke={niveau.color}
+                  strokeWidth="10"
+                  strokeLinecap="round"
+                  strokeDasharray={CIRCUMFERENCE}
+                  strokeDashoffset={dashOffset}
+                  transform="rotate(-90 60 60)"
+                  className={styles.progressCircle}
+                />
+              </svg>
+              <div className={styles.circleInner}>
+                <span className={styles.pctNum}>{pct}%</span>
+                <span className={styles.pctLabel} style={{ color: niveau.color }}>{niveau.label}</span>
+              </div>
             </div>
-          </div>
 
-          <div className={styles.stats}>
-            <div className={styles.statItem}>
-              <span className={styles.statValue} style={{ color: 'var(--correct)' }}>{score}</span>
-              <span className={styles.statLabel}>Bonnes réponses</span>
-            </div>
-            <div className={styles.statDivider} />
-            <div className={styles.statItem}>
-              <span className={styles.statValue} style={{ color: 'var(--wrong)' }}>{mauvaises}</span>
-              <span className={styles.statLabel}>Mauvaises réponses</span>
-            </div>
-            <div className={styles.statDivider} />
-            <div className={styles.statItem}>
-              <span className={styles.statValue}>{formatTemps(tempsTotal)}</span>
-              <span className={styles.statLabel}>Temps total</span>
-            </div>
-            {positionClassement > 0 && (
-              <>
-                <div className={styles.statDivider} />
-                <div className={styles.statItem}>
-                  <span className={styles.statValue}>#{positionClassement}</span>
-                  <span className={styles.statLabel}>Classement</span>
+            <div className={styles.statsGrid}>
+              <div className={styles.statBox}>
+                <span className={styles.statVal} style={{ color: 'var(--correct)' }}>{score}</span>
+                <span className={styles.statKey}>Bonnes<br/>réponses</span>
+              </div>
+              <div className={styles.statBox}>
+                <span className={styles.statVal} style={{ color: 'var(--wrong)' }}>{mauvaises}</span>
+                <span className={styles.statKey}>Mauvaises<br/>réponses</span>
+              </div>
+              <div className={styles.statBox}>
+                <span className={styles.statVal}>{formatTemps(tempsTotal)}</span>
+                <span className={styles.statKey}>Temps<br/>total</span>
+              </div>
+              {positionClassement > 0 && (
+                <div className={`${styles.statBox} ${styles.statBoxHighlight}`}>
+                  <span className={styles.statVal} style={{ color: 'var(--egis-green-dark)' }}>#{positionClassement}</span>
+                  <span className={styles.statKey}>Votre<br/>position</span>
                 </div>
-              </>
-            )}
+              )}
+            </div>
           </div>
         </div>
 
+        {/* Détail */}
         <div className={`card ${styles.detailCard}`}>
           <h3 className={styles.detailTitle}>Détail par question</h3>
           <div className={styles.detailList}>
@@ -77,7 +96,10 @@ export default function Resultats() {
               <div key={i} className={`${styles.detailRow} ${r.correcte ? styles.detailOk : styles.detailKo}`}>
                 <span className={styles.detailQ}>Q{i + 1}</span>
                 <span className={styles.detailIcon}>{r.correcte ? '✓' : '✗'}</span>
-                <span className={styles.detailTexte}>{questions[i].texte.slice(0, 70)}{questions[i].texte.length > 70 ? '…' : ''}</span>
+                <span className={styles.detailTexte}>
+                  {questions[i].texte.slice(0, 75)}{questions[i].texte.length > 75 ? '…' : ''}
+                </span>
+                <span className={`badge ${styles.detailCat}`}>{questions[i].categorie}</span>
               </div>
             ))}
           </div>
@@ -89,7 +111,7 @@ export default function Resultats() {
 
         <div className={styles.actions}>
           <button className="btn-primary" onClick={voirClassement}>Classement complet →</button>
-          <button className="btn-secondary" onClick={retourAccueil}>Retour à l'accueil</button>
+          <button className="btn-secondary" onClick={retourAccueil}>← Accueil</button>
         </div>
       </main>
       <Signature />

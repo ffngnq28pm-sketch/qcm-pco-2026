@@ -1,27 +1,38 @@
 .timer {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  background: rgba(255,255,255,0.07);
+  gap: 0.45rem;
+  background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: 8px;
-  padding: 0.35rem 0.85rem;
-  color: rgba(255,255,255,0.9);
+  padding: 0.4rem 0.9rem;
+  color: rgba(255,255,255,0.85);
+  backdrop-filter: blur(4px);
 }
 
-.icon { font-size: 0.85rem; }
+.icon { font-size: 0.82rem; opacity: 0.8; }
 
 .time {
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 800;
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 }
 
-.warning { color: var(--warning); border-color: rgba(245,158,11,0.3); }
-.danger { color: var(--wrong); border-color: rgba(239,68,68,0.3); animation: blink 1s infinite; }
+.warning {
+  color: var(--warning);
+  border-color: rgba(245,158,11,0.35);
+  background: rgba(245,158,11,0.1);
+}
+
+.danger {
+  color: #fca5a5;
+  border-color: rgba(239,68,68,0.4);
+  background: rgba(239,68,68,0.12);
+  animation: blink 1s infinite;
+}
 
 @keyframes blink {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.65; }
+  50% { opacity: 0.6; }
 }

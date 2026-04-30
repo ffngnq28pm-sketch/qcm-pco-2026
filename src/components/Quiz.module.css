@@ -1,34 +1,54 @@
 .page { min-height: 100vh; display: flex; flex-direction: column; background: var(--egis-light); }
 
 .header {
-  background: var(--egis-navy);
-  padding: 0 1.5rem;
+  background: linear-gradient(135deg, #0b1e2d 0%, #0d2540 100%);
+  padding: 0 1.75rem;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  height: 60px;
-  box-shadow: var(--shadow-md);
+  gap: 1rem;
+  height: 64px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.2);
   flex-shrink: 0;
+  position: relative;
+  z-index: 10;
 }
 
-.logoBar { width: 4px; height: 28px; background: var(--egis-green); border-radius: 2px; flex-shrink: 0; }
+.logoBar { width: 3px; height: 26px; background: linear-gradient(to bottom, var(--egis-green), var(--egis-green-dark)); border-radius: 2px; flex-shrink: 0; }
 
 .headerInfo { display: flex; flex-direction: column; }
-.candidatLabel { font-size: 0.9rem; font-weight: 600; color: #fff; line-height: 1.2; }
-.scoreLabel { font-size: 0.72rem; color: rgba(255,255,255,0.55); }
+.candidatLabel { font-size: 0.88rem; font-weight: 700; color: #fff; line-height: 1.2; }
+.scoreLabel {
+  font-size: 0.7rem;
+  color: var(--egis-green);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
 
 .headerSpacer { flex: 1; }
 
-.progressWrap { height: 4px; background: rgba(255,255,255,0.15); }
-.progressFill { height: 100%; background: var(--egis-green); transition: width 0.5s ease; }
+/* Barre de progression */
+.progressWrap {
+  height: 3px;
+  background: rgba(255,255,255,0.1);
+  background: #e2e8f0;
+  position: relative;
+}
 
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--egis-green), #a8e063);
+  transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: 0 0 8px rgba(122,193,67,0.5);
+}
+
+/* Main */
 .main {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 1rem;
-  max-width: 700px;
+  padding: 1.75rem 1rem 2rem;
+  max-width: 720px;
   margin: 0 auto;
   width: 100%;
   gap: 1rem;
@@ -39,10 +59,35 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  animation: fadeIn 0.3s ease both;
 }
 
-.counter { font-size: 0.82rem; color: var(--egis-gray); font-weight: 500; }
+.counter {
+  font-size: 0.8rem;
+  color: var(--egis-gray);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
 
-.questionCard { padding: 1.75rem; width: 100%; }
+.questionCard {
+  padding: 2rem;
+  width: 100%;
+  animation: fadeUp 0.4s cubic-bezier(0.4,0,0.2,1) both;
+  position: relative;
+  overflow: hidden;
+}
 
-.hint { font-size: 0.78rem; color: var(--egis-gray); font-style: italic; }
+.questionCard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--egis-green), transparent);
+}
+
+.hint {
+  font-size: 0.76rem;
+  color: var(--egis-gray-light);
+  font-style: italic;
+  letter-spacing: 0.01em;
+}

@@ -20,48 +20,72 @@ export default function Accueil() {
 
   return (
     <div className={styles.page}>
-      <header className={styles.header}>
-        <div className={styles.logoBar} />
-        <div>
-          <div className={styles.headerTitle}>Egis PCO</div>
-          <div className={styles.headerSub}>Plateforme de formation</div>
-        </div>
-        <div className={styles.headerSpacer} />
-        {classement.length > 0 && (
-          <button className={`btn-ghost ${styles.clsBtn}`} onClick={voirClassement}>
-            Classement ({classement.length})
-          </button>
-        )}
-      </header>
+      {/* ── Section hero sombre ── */}
+      <div className={styles.hero}>
+        <header className={styles.header}>
+          <div className={styles.logoBar} />
+          <div>
+            <div className={styles.headerTitle}>EGIS PCO</div>
+            <div className={styles.headerSub}>Plateforme de formation interne</div>
+          </div>
+          <div className={styles.headerSpacer} />
+          {classement.length > 0 && (
+            <button className={`btn-ghost ${styles.clsBtn}`} onClick={voirClassement}>
+              Classement ({classement.length})
+            </button>
+          )}
+        </header>
 
-      <main className={styles.main}>
-        <div className={styles.hero}>
-          <div className={styles.heroAccent} />
-          <span className={`badge badge-green ${styles.heroBadge}`}>Session 2026</span>
-          <h1 className={styles.heroTitle}>QCM Finance, RH,<br />Contrats &amp; Processus PCO</h1>
+        <div className={styles.heroContent}>
+          <span className="badge badge-green">Session 2026</span>
+          <h1 className={styles.heroTitle}>
+            QCM <span>Finance, RH,</span><br />Contrats &amp; Processus PCO
+          </h1>
           <p className={styles.heroSub}>
-            {questions.length} questions · {minutes} minutes · Classement en temps réel
+            Évaluez vos connaissances sur les processus clés de la Direction Financière
           </p>
+          <div className={styles.heroStats}>
+            <div className={styles.heroStat}>
+              <span className={styles.heroStatIcon}>📋</span>
+              {questions.length} questions
+            </div>
+            <div className={styles.heroStat}>
+              <span className={styles.heroStatIcon}>⏱</span>
+              {minutes} minutes
+            </div>
+            <div className={styles.heroStat}>
+              <span className={styles.heroStatIcon}>🏆</span>
+              Top 10 en direct
+            </div>
+          </div>
         </div>
+      </div>
 
+      {/* ── Section claire ── */}
+      <div className={styles.content}>
         <div className={`card ${styles.formCard}`}>
-          <h2 className={styles.formTitle}>Accès au quiz</h2>
-          <p className={styles.formDesc}>Saisissez votre nom ou identifiant pour commencer.</p>
+          <div className={styles.formHeader}>
+            <h2 className={styles.formTitle}>Accéder au quiz</h2>
+            <p className={styles.formDesc}>Saisissez votre nom pour commencer l'évaluation.</p>
+          </div>
 
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.inputWrap}>
               <label htmlFor="nom" className={styles.label}>Nom / Identifiant</label>
-              <input
-                id="nom"
-                type="text"
-                className={styles.input}
-                placeholder="Ex : Marie Dupont"
-                value={nom}
-                onChange={e => { setNom(e.target.value); setErreur(''); }}
-                maxLength={60}
-                autoFocus
-              />
-              {erreur && <span className={styles.erreur}>{erreur}</span>}
+              <div className={styles.inputGroup}>
+                <span className={styles.inputIcon}>👤</span>
+                <input
+                  id="nom"
+                  type="text"
+                  className={styles.input}
+                  placeholder="Ex : Marie Dupont"
+                  value={nom}
+                  onChange={e => { setNom(e.target.value); setErreur(''); }}
+                  maxLength={60}
+                  autoFocus
+                />
+              </div>
+              {erreur && <span className={styles.erreur}>⚠ {erreur}</span>}
             </div>
             <button type="submit" className={`btn-primary ${styles.submitBtn}`} disabled={!nom.trim()}>
               Commencer le quiz →
@@ -71,15 +95,15 @@ export default function Accueil() {
           <div className={styles.rules}>
             <div className={styles.ruleItem}>
               <span className={styles.ruleIcon}>⏱</span>
-              <span>Temps global de <strong>{minutes} min</strong> pour l'ensemble des questions</span>
+              <span>Temps global de <strong>{minutes} min</strong> pour l'ensemble du quiz</span>
             </div>
             <div className={styles.ruleItem}>
               <span className={styles.ruleIcon}>✓</span>
-              <span><strong>1 point</strong> par bonne réponse, départage au temps</span>
+              <span><strong>1 point</strong> par bonne réponse · départage au temps</span>
             </div>
             <div className={styles.ruleItem}>
               <span className={styles.ruleIcon}>🏆</span>
-              <span>Top 10 affiché après chaque question</span>
+              <span>Classement mis à jour après chaque question</span>
             </div>
           </div>
         </div>
@@ -101,7 +125,8 @@ export default function Accueil() {
             </div>
           </div>
         )}
-      </main>
+      </div>
+
       <Signature />
     </div>
   );

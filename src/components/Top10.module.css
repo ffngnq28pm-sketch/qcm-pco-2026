@@ -1,37 +1,30 @@
 .container {
   background: var(--egis-white);
-  border: 1px solid var(--egis-border);
+  border: 1px solid rgba(226,232,240,0.8);
   border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
 }
 
-.compact .header { padding: 0.75rem 1rem; }
-.compact .row { padding: 0.5rem 1rem; }
+.compact .header { padding: 0.75rem 1.1rem; }
+.compact .row { padding: 0.55rem 1.1rem; }
 
 .header {
-  background: var(--egis-navy);
+  background: linear-gradient(135deg, #0b1e2d 0%, #163045 100%);
   padding: 1rem 1.25rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
 .trophy { font-size: 1rem; }
-
-.title {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
+.title { font-size: 0.75rem; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 0.1em; }
 
 .list { display: flex; flex-direction: column; }
 
 .row {
   display: grid;
-  grid-template-columns: 2rem 1fr auto auto;
+  grid-template-columns: 2.25rem 1fr auto auto;
   gap: 0.75rem;
   align-items: center;
   padding: 0.65rem 1.25rem;
@@ -40,45 +33,30 @@
 }
 
 .row:last-child { border-bottom: none; }
+.row:nth-child(even) { background: rgba(248,250,252,0.6); }
+.row:hover { background: var(--egis-green-light); }
 
-.highlight { background: var(--egis-green-light); }
+.highlight {
+  background: rgba(122,193,67,0.1) !important;
+  border-left: 2px solid var(--egis-green);
+}
 
 .rank { display: flex; align-items: center; justify-content: center; font-size: 1rem; }
 
 .rankNum {
-  width: 22px;
-  height: 22px;
+  width: 24px; height: 24px;
   border-radius: 50%;
   background: var(--egis-light);
+  border: 1.5px solid var(--egis-border);
   color: var(--egis-gray);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
 }
 
-.nom {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--egis-anthracite);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+.nom { font-size: 0.88rem; font-weight: 600; color: var(--egis-anthracite); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-.score {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--egis-green-dark);
-  font-variant-numeric: tabular-nums;
-}
+.score { font-size: 0.88rem; font-weight: 800; color: var(--egis-green-dark); font-variant-numeric: tabular-nums; }
+.scoreTotal { font-weight: 400; color: var(--egis-gray-light); font-size: 0.78rem; }
 
-.scoreTotal { font-weight: 400; color: var(--egis-gray); font-size: 0.8rem; }
-
-.temps {
-  font-size: 0.8rem;
-  color: var(--egis-gray);
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-}
+.temps { font-size: 0.78rem; color: var(--egis-gray); font-variant-numeric: tabular-nums; white-space: nowrap; }
