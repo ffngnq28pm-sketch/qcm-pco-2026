@@ -12,6 +12,8 @@ const medals = ['🥇', '🥈', '🥉'];
 
 export default function Classement() {
   const { classement, retourAccueil, resetClassement, candidat } = useQuiz();
+  const ADMINS = ['Charif', 'Carlos', 'Céline', 'Souad'];
+  const estAdmin = ADMINS.some(a => a.toLowerCase() === candidat.toLowerCase());
 
   return (
     <div className={styles.page}>
@@ -22,11 +24,13 @@ export default function Classement() {
           <div className={styles.headerSub}>{classement.length} participant{classement.length > 1 ? 's' : ''}</div>
         </div>
         <div className={styles.headerSpacer} />
-        <button className={`btn-ghost ${styles.resetBtn}`} onClick={() => {
-          if (window.confirm('Réinitialiser tout le classement ?')) resetClassement();
-        }}>
-          Réinitialiser
-        </button>
+        {estAdmin && (
+          <button className={`btn-ghost ${styles.resetBtn}`} onClick={() => {
+            if (window.confirm('Réinitialiser tout le classement ?')) resetClassement();
+          }}>
+            Réinitialiser
+          </button>
+        )}
         <button className="btn-primary" onClick={retourAccueil}>← Accueil</button>
       </header>
 

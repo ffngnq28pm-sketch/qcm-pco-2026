@@ -457,7 +457,7 @@ export const questions = [
 ];
 
 export const CONFIG = {
-  tempsTotal: 900,
+  tempsTotal: 1200,
   pointsParBonneReponse: 1,
   topN: 10
 };
