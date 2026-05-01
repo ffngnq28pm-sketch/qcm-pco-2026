@@ -43,7 +43,7 @@ export const PRENOMS = {
   gabriel:    { origine: "hébreu",      texte: "Gabriel vient de l'hébreu גַּבְרִיאֵל (Gavriel) — « Dieu est ma force ». Archange messager, c'est lui qui annonce les grandes nouvelles." },
   geneviève:  { origine: "celtique",    texte: "Geneviève vient du gaulois Genovefa — « femme de race, celle qui donne naissance ». Sainte patronne de Paris, elle a sauvé la ville d'Attila par la prière." },
   ghislaine:  { origine: "germanique",  texte: "Ghislaine vient du germanique Gisil — « otage de paix, gage de confiance ». Un prénom rare qui porte en lui une noblesse discrète et une loyauté sans faille.",
-    messagePersonnel: { icone: "💫", label: "Un message pour toi", texte: "Il y a des personnes dont la présence illumine une équipe sans même le savoir. Tu es de celles-là, Ghislaine. Une admiration sincère, profonde et absolument respectable — ton mari peut dormir tranquille. 😊" } },
+    messagePersonnel: { icone: "💫", label: "Un message pour toi", texte: "Ghislaine, il y a des prénoms qu'on prononce avec un sourire sans savoir pourquoi. Le tien en fait partie. Avec toute mon amitié sincère et beaucoup d'affection — Charif. 🌿" } },
   // H
   hassan:     { origine: "arabe",       texte: "Hassan vient de l'arabe حسن (ḥasan) — « beau, bon ». Un prénom qui conjugue esthétique et vertu." },
   // I
