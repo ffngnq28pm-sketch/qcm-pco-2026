@@ -113,7 +113,7 @@ export const PRENOMS = {
   thomas:     { origine: "araméen",     texte: "Thomas vient de l'araméen תְּאוֹמָא (Toma) — « le jumeau ». Thomas Edison, qui avait un jumeau dans l'âme : la science et l'invention." },
   // V
   valentine:  { origine: "latin",       texte: "Valentine vient du latin Valentinus — « fort, valeureux ». La Saint-Valentin a immortalisé ce prénom comme symbole d'amour et de courage.",
-    messagePersonnel: { icone: "💍", label: "Un message pour toi", texte: "Félicitations pour ton futur mariage, Valentine ! Que cette belle aventure t'apporte tout ce que tu mérites : amour, complicité et bonheur sans fin. Je t'adore. 💚" } },
+    messagePersonnel: { icone: "💍", label: "Un message pour toi", texte: "Félicitations pour ton futur mariage, Valentine ! Que cette belle aventure t'apporte tout ce que tu mérites : amour, complicité et bonheur sans fin. 💚" } },
   valérie:    { origine: "latin",       texte: "Valérie vient du latin Valeria — « forte, vigoureuse ». La gens Valeria était l'une des plus nobles familles de la Rome antique." },
   véronique:  { origine: "grec/latin",  texte: "Véronique vient du grec Berenikē — « qui porte la victoire ». Une étymologie qui annonce le succès !" },
   virginie:   { origine: "latin",       texte: "Virginie vient du latin Virginia — « vierge, pure ». Virginie de Paul et Virginie, le roman de Bernardin de Saint-Pierre, a fait rêver toute l'Europe." },
